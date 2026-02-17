@@ -52,17 +52,17 @@ export default function CaseStatusPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 text-white py-8">
-        <div className="max-w-5xl mx-auto px-4">
+      <div className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 text-white py-6 sm:py-8">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="flex items-center gap-2 mb-3">
-            <a href="/" className="text-sm text-blue-300 hover:text-blue-200 transition-colors">
+            <a href="/" className="text-xs sm:text-sm text-blue-300 hover:text-blue-200 transition-colors">
               Home
             </a>
             <span className="text-gray-400">/</span>
-            <span className="text-sm text-gray-300">Case Status</span>
+            <span className="text-xs sm:text-sm text-gray-300">Case Status</span>
           </div>
-          <h1 className="text-3xl font-bold mb-2">Case Status</h1>
-          <p className="text-blue-200 text-lg">{caseData.propertyAddress}</p>
+          <h1 className="text-2xl sm:text-3xl font-bold mb-2">Case Status</h1>
+          <p className="text-blue-200 text-base sm:text-lg">{caseData.propertyAddress}</p>
           <div className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-yellow-500/20 border border-yellow-400/50 rounded-lg">
             <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
             <span className="text-sm font-semibold text-yellow-200">{caseData.status}</span>
@@ -71,17 +71,17 @@ export default function CaseStatusPage() {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-5xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
           {/* Left Column - Timeline */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-4 sm:space-y-6">
             {/* Case Timeline */}
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-              <h2 className="text-xl font-semibold text-gray-900 mb-6">Case Timeline</h2>
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+              <h2 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4 sm:mb-6">Case Timeline</h2>
               
               <div className="relative">
                 {caseData.timeline.map((item, index) => (
-                  <div key={index} className="flex gap-4 pb-8 last:pb-0">
+                  <div key={index} className="flex gap-3 sm:gap-4 pb-6 sm:pb-8 last:pb-0">
                     {/* Timeline Line */}
                     <div className="relative flex flex-col items-center">
                       <div
@@ -114,9 +114,9 @@ export default function CaseStatusPage() {
 
                     {/* Timeline Content */}
                     <div className="flex-1 pb-4">
-                      <div className="flex items-start justify-between mb-2">
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-2 gap-1 sm:gap-0">
                         <h3
-                          className={`text-base font-semibold ${
+                          className={`text-sm sm:text-base font-semibold ${
                             item.status === 'current' ? 'text-gray-900' : 'text-gray-700'
                           }`}
                         >
@@ -158,16 +158,16 @@ export default function CaseStatusPage() {
             </div>
 
             {/* Need Help Section */}
-            <div className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 rounded-xl p-6 text-white">
-              <div className="flex items-start gap-4">
+            <div className="bg-gradient-to-r from-slate-900 via-blue-900 to-slate-900 rounded-xl p-4 sm:p-6 text-white">
+              <div className="flex flex-col sm:flex-row items-start gap-3 sm:gap-4">
                 <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center shrink-0">
                   <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Need Help?</h3>
-                  <p className="text-blue-200 text-sm mb-4">
+                  <h3 className="text-base sm:text-lg font-semibold mb-2">Need Help?</h3>
+                  <p className="text-blue-200 text-sm mb-3 sm:mb-4">
                     If you have questions about your case or need to provide additional documentation, our support team is here to help.
                   </p>
                   <a
@@ -186,8 +186,8 @@ export default function CaseStatusPage() {
 
           {/* Right Column - Case Information */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 sticky top-8">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">Case Information</h2>
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6 lg:sticky lg:top-8">
+              <h2 className="text-base sm:text-lg font-semibold text-gray-900 mb-4">Case Information</h2>
               
               <div className="space-y-4">
                 <div>

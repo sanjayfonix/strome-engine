@@ -81,8 +81,8 @@ export default function Step2IntakeForm() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-4xl mx-auto px-4">
+    <div className="min-h-screen bg-gray-50 py-6 sm:py-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
         {/* Back Button */}
         <button
           onClick={handleBack}
@@ -95,12 +95,12 @@ export default function Step2IntakeForm() {
         </button>
 
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Create New Report</h1>
-          <p className="text-gray-600 mb-6">Step 2 of 5: Property and Claim Information</p>
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Create New Report</h1>
+          <p className="text-sm sm:text-base text-gray-600 mb-6">Step 2 of 5: Property and Claim Information</p>
 
           {/* Progress Stepper */}
-          <div className="flex items-center gap-4 overflow-x-auto pb-4">
+          <div className="flex items-center gap-2 sm:gap-4 overflow-x-auto pb-4 scrollbar-hide">
             <ProgressStep number={1} label="Requester Info" status="complete" />
             <div className="w-12 sm:w-16 h-0.5 bg-blue-600"></div>
             <ProgressStep number={2} label="Intake Form" status="current" />
@@ -112,9 +112,9 @@ export default function Step2IntakeForm() {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
           {/* Claimant Details */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
             <h2 className="text-lg font-semibold text-gray-900 mb-6">Claimant Details</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

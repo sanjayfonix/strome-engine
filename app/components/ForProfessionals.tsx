@@ -8,11 +8,11 @@ export default function ForProfessionals() {
   };
 
   return (
-    <section className="py-20" style={{ backgroundColor: '#f8fafc' }}>
+    <section className="py-12 sm:py-16 md:py-20" style={{ backgroundColor: '#f8fafc' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
             Built for Professionals Handling Insurance Disputes
           </h2>
           <p className="text-lg text-gray-500">
@@ -21,7 +21,7 @@ export default function ForProfessionals() {
         </div>
 
         {/* Professional Cards */}
-        <div className="grid md:grid-cols-3 gap-8 mb-20">
+        <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-20">
           {/* Attorneys */}
           <div style={cardStyle}>
             <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style={{ backgroundColor: '#dbeafe' }}>
@@ -65,8 +65,8 @@ export default function ForProfessionals() {
         {/* Structured, Transparent, Accountable Section */}
         <div className="">
           {/* Centered Header */}
-          <div className="text-center pt-12 pb-4 px-10">
-            <h3 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center pt-8 sm:pt-12 pb-4 px-4 sm:px-10">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">
               Structured. Transparent. Accountable.
             </h3>
             <p className="text-gray-500 text-lg">
@@ -76,7 +76,7 @@ export default function ForProfessionals() {
 
           <div className="grid md:grid-cols-2 gap-0">
             {/* Left Side - Features List */}
-            <div className="p-10 lg:p-12">
+            <div className="p-6 sm:p-8 lg:p-12">
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0" style={{ backgroundColor: '#dbeafe' }}>

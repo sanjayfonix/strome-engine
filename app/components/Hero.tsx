@@ -11,10 +11,10 @@ export default function Hero() {
         }}></div>
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20 lg:py-32">
         <div className="text-center max-w-5xl mx-auto">
           {/* Main Heading */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 sm:mb-6">
             AI-Powered Forensic Engineering  Reports{" "}
             <span
               style={{
@@ -30,7 +30,7 @@ export default function Hero() {
           </h1>
 
           {/* Subheading */}
-          <p className="text-lg sm:text-xl mb-10 max-w-5xl mx-auto leading-relaxed" style={{ color: '#94a3b8' }}>
+          <p className="text-base sm:text-lg md:text-xl mb-8 sm:mb-10 max-w-5xl mx-auto leading-relaxed px-2" style={{ color: '#94a3b8' }}>
             Transform property damage documentation into a structured, court-defensible engineering report in
             days — not months.
           </p>
@@ -39,7 +39,7 @@ export default function Hero() {
           <div className="mb-6">
             <Link
               href="/intake"
-              className="inline-block px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              className="inline-block px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
             >
               Create a Report
             </Link>
@@ -51,7 +51,7 @@ export default function Hero() {
           </p>
 
           {/* Feature Icons */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 mt-12 sm:mt-16 max-w-4xl mx-auto px-2">
             {/* Licensed PE Review */}
             <div className="flex flex-col items-center text-center">
               <div className="w-16 h-16 mb-4 rounded-lg flex items-center justify-center border" style={{ backgroundColor: 'rgba(255,255,255,0.05)', borderColor: 'rgba(255,255,255,0.1)' }}>

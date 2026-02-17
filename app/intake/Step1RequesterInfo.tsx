@@ -34,8 +34,8 @@ export default function Step1RequesterInfo() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-2xl mx-auto px-4">
+    <div className="min-h-screen bg-gray-50 py-6 sm:py-8">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6">
         {/* Back to Home Link */}
         <Link href="/" className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 mb-6 transition-colors">
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -45,13 +45,13 @@ export default function Step1RequesterInfo() {
         </Link>
 
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Create New Report</h1>
-          <p className="text-gray-600">Step 1 of 4: Requester Information</p>
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Create New Report</h1>
+          <p className="text-sm sm:text-base text-gray-600">Step 1 of 4: Requester Information</p>
         </div>
 
         {/* Form Card */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 sm:p-8">
           <div className="mb-6">
             <h2 className="text-lg font-semibold text-gray-900 mb-2">Guest Requester Information</h2>
             <p className="text-sm text-gray-600">
