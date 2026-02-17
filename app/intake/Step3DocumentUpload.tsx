@@ -14,13 +14,12 @@ function ProgressStep({ number, label, status }: ProgressStepProps) {
     <div className="flex items-center">
       <div className="flex items-center gap-3">
         <div
-          className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm transition-all ${
-            status === 'complete'
+          className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm transition-all ${status === 'complete'
               ? 'bg-green-500 text-white'
               : status === 'current'
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-200 text-gray-600'
-          }`}
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-200 text-gray-600'
+            }`}
         >
           {status === 'complete' ? (
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
@@ -30,7 +29,10 @@ function ProgressStep({ number, label, status }: ProgressStepProps) {
             number
           )}
         </div>
-        <span className={`text-sm font-medium hidden sm:block ${status === 'current' ? 'text-gray-900' : 'text-gray-600'}`}>
+        <span
+          className={`text-sm font-medium hidden sm:block whitespace-nowrap ${status === "current" ? "text-gray-900" : "text-gray-600"
+            }`}
+        >
           {label}
         </span>
       </div>
@@ -66,7 +68,7 @@ export default function Step3DocumentUpload() {
     e.preventDefault();
     e.stopPropagation();
     setIsDragging(false);
-    
+
     const droppedFiles = Array.from(e.dataTransfer.files);
     handleFiles(droppedFiles);
   };
@@ -205,11 +207,10 @@ export default function Step3DocumentUpload() {
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
-            className={`border-2 border-dashed rounded-xl p-12 text-center transition-all cursor-pointer ${
-              isDragging
+            className={`border-2 border-dashed rounded-xl p-12 text-center transition-all cursor-pointer ${isDragging
                 ? 'border-blue-500 bg-blue-50'
                 : 'border-gray-300 hover:border-gray-400'
-            }`}
+              }`}
             onClick={() => fileInputRef.current?.click()}
           >
             <div className="flex flex-col items-center">

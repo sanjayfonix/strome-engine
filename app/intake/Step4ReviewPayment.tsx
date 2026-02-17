@@ -14,13 +14,12 @@ function ProgressStep({ number, label, status }: ProgressStepProps) {
     <div className="flex items-center">
       <div className="flex items-center gap-3">
         <div
-          className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm transition-all ${
-            status === 'complete'
+          className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm transition-all ${status === 'complete'
               ? 'bg-green-500 text-white'
               : status === 'current'
-              ? 'bg-blue-600 text-white'
-              : 'bg-gray-200 text-gray-600'
-          }`}
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-200 text-gray-600'
+            }`}
         >
           {status === 'complete' ? (
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
@@ -30,7 +29,10 @@ function ProgressStep({ number, label, status }: ProgressStepProps) {
             number
           )}
         </div>
-        <span className={`text-sm font-medium hidden sm:block ${status === 'current' ? 'text-gray-900' : 'text-gray-600'}`}>
+        <span
+          className={`text-sm font-medium hidden sm:block whitespace-nowrap ${status === "current" ? "text-gray-900" : "text-gray-600"
+            }`}
+        >
           {label}
         </span>
       </div>
@@ -161,7 +163,7 @@ export default function Step4ReviewPayment() {
                   Edit
                 </button>
               </div>
-              
+
               {/* Claimant Details */}
               <div className="mb-4">
                 <h3 className="text-sm font-semibold text-gray-700 mb-3">Claimant Details</h3>
@@ -283,7 +285,7 @@ export default function Step4ReviewPayment() {
           <div className="lg:col-span-1">
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 sticky top-8">
               <h2 className="text-lg font-semibold text-gray-900 mb-6">Payment Summary</h2>
-              
+
               {/* Report Fee */}
               <div className="flex items-center justify-between mb-4">
                 <span className="text-sm text-gray-700">Report Fee</span>
