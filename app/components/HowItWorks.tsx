@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const steps = [
   {
@@ -62,6 +63,25 @@ const steps = [
 
 export default function HowItWorks() {
   const [activeStep, setActiveStep] = useState(1);
+  const [isPaused, setIsPaused] = useState(false);
+
+  const goToNext = useCallback(() => {
+    setActiveStep((prev) => (prev >= steps.length ? 1 : prev + 1));
+  }, []);
+
+  // Auto-slide every 2 seconds
+  useEffect(() => {
+    if (isPaused) return;
+    const interval = setInterval(goToNext, 2000);
+    return () => clearInterval(interval);
+  }, [isPaused, goToNext]);
+
+  const handleStepClick = (stepNumber: number) => {
+    setActiveStep(stepNumber);
+    setIsPaused(true);
+    // Resume auto-slide after 6 seconds of inactivity
+    setTimeout(() => setIsPaused(false), 6000);
+  };
 
   return (
     <section className="py-20 bg-gray-50">
@@ -80,10 +100,11 @@ export default function HowItWorks() {
         <div className="relative mb-16">
           {/* Progress Line */}
           <div className="absolute top-6 left-0 right-0 h-0.5 bg-gray-300 hidden md:block"></div>
-          <div 
-            className="absolute top-6 left-0 h-0.5 bg-blue-600 transition-all duration-500 hidden md:block"
-            style={{ width: `${((activeStep - 1) / (steps.length - 1)) * 100}%` }}
-          ></div>
+          <motion.div
+            className="absolute top-6 left-0 h-0.5 bg-blue-600 hidden md:block"
+            animate={{ width: `${((activeStep - 1) / (steps.length - 1)) * 100}%` }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          />
 
           {/* Steps */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-0 relative">
@@ -91,22 +112,24 @@ export default function HowItWorks() {
               <div
                 key={step.number}
                 className="flex flex-col items-center cursor-pointer"
-                onClick={() => setActiveStep(step.number)}
+                onClick={() => handleStepClick(step.number)}
               >
-                <div
-                  className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg mb-3 transition-all duration-300 relative z-10 ${
-                    activeStep === step.number
-                      ? 'bg-blue-600 text-white scale-110 shadow-lg'
+                <motion.div
+                  className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg mb-3 relative z-10 ${activeStep === step.number
+                      ? 'bg-blue-600 text-white shadow-lg'
                       : activeStep > step.number
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-white border-2 border-gray-300 text-gray-500'
-                  }`}
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-white border-2 border-gray-300 text-gray-500'
+                    }`}
+                  animate={{
+                    scale: activeStep === step.number ? 1.1 : 1,
+                  }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
                 >
                   {step.number}
-                </div>
-                <p className={`text-xs sm:text-sm text-center font-medium transition-colors duration-300 ${
-                  activeStep === step.number ? 'text-blue-600' : 'text-gray-600'
-                }`}>
+                </motion.div>
+                <p className={`text-xs sm:text-sm text-center font-medium transition-colors duration-300 ${activeStep === step.number ? 'text-blue-600' : 'text-gray-600'
+                  }`}>
                   {step.subtitle}
                 </p>
               </div>
@@ -116,31 +139,61 @@ export default function HowItWorks() {
 
         {/* Active Step Details */}
         <div className="max-w-7xl mx-auto">
-          {steps.map((step) => (
-            activeStep === step.number && (
-              <div
-                key={step.number}
-                className="bg-white rounded-2xl shadow-lg p-8 transition-all duration-500 animate-fadeIn"
-              >
-                <div className="flex items-start gap-6">
-                  <div className="shrink-0">
-                    <div className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600">
-                      {step.icon}
+          <AnimatePresence mode="wait">
+            {steps.map((step) => (
+              activeStep === step.number && (
+                <motion.div
+                  key={step.number}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  className="bg-white rounded-2xl shadow-lg p-8"
+                >
+                  <div className="flex items-start gap-6">
+                    <div className="shrink-0">
+                      <motion.div
+                        className="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600"
+                        initial={{ scale: 0.8, rotate: -10 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{ duration: 0.4, ease: "easeOut" }}
+                      >
+                        {step.icon}
+                      </motion.div>
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-3">
+                        <motion.span
+                          className="text-3xl font-bold text-blue-600"
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.1 }}
+                        >
+                          {step.number}
+                        </motion.span>
+                        <motion.h3
+                          className="text-2xl font-bold text-gray-900"
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.15 }}
+                        >
+                          {step.title}
+                        </motion.h3>
+                      </div>
+                      <motion.p
+                        className="text-lg text-gray-600 leading-relaxed"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.4, delay: 0.2 }}
+                      >
+                        {step.description}
+                      </motion.p>
                     </div>
                   </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-3">
-                      <span className="text-3xl font-bold text-blue-600">{step.number}</span>
-                      <h3 className="text-2xl font-bold text-gray-900">{step.title}</h3>
-                    </div>
-                    <p className="text-lg text-gray-600 leading-relaxed">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )
-          ))}
+                </motion.div>
+              )
+            ))}
+          </AnimatePresence>
         </div>
       </div>
     </section>

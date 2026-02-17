@@ -13,10 +13,10 @@ const US_STATES = [
   "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
 ];
 
-const PROPERTY_TYPES = ["Residential", "Commercial", "Industrial", "Multi-Family"];
-const ROOF_COVERINGS = ["Asphalt Shingles", "Metal", "Tile", "Slate", "Wood Shake", "Flat/Membrane", "Other"];
-const LOSS_TYPES = ["Hail", "Wind", "Storm", "Fire", "Flood", "Other"];
-const ESTIMATE_TYPES = ["Preliminary", "Final", "Supplemental"];
+const PROPERTY_TYPES = ["Commercial", "Industrial", "Single Family residential", "Multi Family residential"];
+const ROOF_COVERINGS = ["Asphalt Shingles", "Metal roofing"];
+const LOSS_TYPES = ["Hail", "Wind", "Storm", "others"];
+const ESTIMATE_TYPES = ["Career estimate", "Contracter estimate", "Xactimate", "others"];
 
 interface ProgressStepProps {
   number: number;
@@ -30,10 +30,10 @@ function ProgressStep({ number, label, status }: ProgressStepProps) {
       <div className="flex items-center gap-3">
         <div
           className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm transition-all ${status === 'complete'
-              ? 'bg-green-500 text-white'
-              : status === 'current'
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-200 text-gray-600'
+            ? 'bg-green-500 text-white'
+            : status === 'current'
+              ? 'bg-blue-600 text-white'
+              : 'bg-gray-200 text-gray-600'
             }`}
         >
           {status === 'complete' ? (
