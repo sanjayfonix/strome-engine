@@ -16,60 +16,55 @@ export default function Navbar() {
     }, []);
 
     return (
-        <nav className={`sticky top-0 z-50 transition-all duration-300 ${
-            scrolled 
-                ? 'bg-white/80 backdrop-blur-lg border-b border-gray-200 shadow-lg' 
-                : 'bg-white border-b border-gray-100 shadow-sm'
-        }`}>
+        <nav
+            style={{
+                background: "linear-gradient( #0F2A43 50%, #1A3A5C 50%, #0F2A43 50%)",
+            }}
+            className="text-white shadow-lg"
+        >
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
-                    {/* Logo with Gradient and Animation */}
-                    <Link href="/" className="group flex items-center gap-2 transition-all duration-300 hover:scale-105">
-                        <div className="relative">
-                            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg blur-sm opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
-                            <div className="relative bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg p-2">
-                                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                                </svg>
-                            </div>
+                    {/* Logo */}
+                    <Link href="/" className="flex items-center gap-2 transition-all duration-300 hover:opacity-80">
+                        <div className="w-8 h-8 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center border border-white/20">
+                            <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
                         </div>
-                        <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent tracking-tight">
+                        <span className="text-xl font-bold tracking-tight">
                             Storm Engine
                         </span>
                     </Link>
 
-                    {/* Desktop nav with enhanced styling */}
-                    <div className="hidden md:flex items-center gap-3">
+                    {/* Desktop nav with menu items */}
+                    <div className="hidden md:flex items-center gap-8 flex-1 justify-center">
+                        <a href="#how-it-works" className="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200">
+                            How It Works
+                        </a>
+                        <a href="#features" className="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200">
+                            Features
+                        </a>
+                        <a href="#security" className="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200">
+                            Security
+                        </a>
+                        <a href="#professionals" className="text-sm font-medium text-gray-300 hover:text-white transition-colors duration-200">
+                            For Professionals
+                        </a>
+                    </div>
+
+                    {/* CTA Button */}
+                    <div className="hidden md:block">
                         <Link
-                            href="/login"
-                            className="group relative px-6 py-2.5 text-sm font-semibold text-gray-700 rounded-xl hover:text-primary transition-all duration-300 overflow-hidden"
+                            href="/intake"
+                            className="px-6 py-2.5 bg-white text-gray-900 text-sm font-semibold rounded-lg hover:bg-gray-100 transition-all duration-200"
                         >
-                            <span className="absolute inset-0 bg-gradient-to-r from-blue-50 to-purple-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></span>
-                            <span className="relative flex items-center gap-2">
-                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
-                                </svg>
-                                Login
-                            </span>
-                        </Link>
-                        <Link
-                            href="/signup"
-                            className="group relative px-6 py-2.5 text-sm font-semibold text-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-                        >
-                            <span className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600"></span>
-                            <span className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                            <span className="relative flex items-center gap-2">
-                                Sign Up
-                                <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                                </svg>
-                            </span>
+                            Create a Report
                         </Link>
                     </div>
 
-                    {/* Mobile hamburger with animation */}
+                    {/* Mobile hamburger */}
                     <button
-                        className="md:hidden p-2 rounded-xl text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 transition-all duration-300 group"
+                        className="md:hidden p-2 rounded-lg text-white hover:bg-white/10 transition-all duration-200"
                         onClick={() => setMobileOpen(!mobileOpen)}
                         aria-label="Toggle menu"
                     >
@@ -82,30 +77,44 @@ export default function Navbar() {
                 </div>
             </div>
 
-            {/* Mobile menu with slide animation */}
-            <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-                mobileOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
-            }`}>
-                <div className="border-t border-gray-100 bg-gradient-to-b from-white to-gray-50 px-4 pb-4 pt-4 space-y-3">
-                    <Link
-                        href="/login"
-                        className="flex items-center gap-3 w-full px-5 py-3 text-sm font-semibold text-gray-700 rounded-xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-purple-50 hover:text-primary transition-all duration-300 transform hover:translate-x-1"
+            {/* Mobile menu */}
+            <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                }`}>
+                <div className="bg-[#1e3a5f] px-4 pb-4 pt-2 space-y-2">
+                    <a
+                        href="#how-it-works"
+                        className="block px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
                         onClick={() => setMobileOpen(false)}
                     >
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
-                        </svg>
-                        Login
-                    </Link>
-                    <Link
-                        href="/signup"
-                        className="flex items-center justify-center gap-2 w-full px-5 py-3 text-sm font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl hover:shadow-lg transition-all duration-300 transform hover:scale-105"
+                        How It Works
+                    </a>
+                    <a
+                        href="#features"
+                        className="block px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
                         onClick={() => setMobileOpen(false)}
                     >
-                        Sign Up
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                        </svg>
+                        Features
+                    </a>
+                    <a
+                        href="#security"
+                        className="block px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
+                        onClick={() => setMobileOpen(false)}
+                    >
+                        Security
+                    </a>
+                    <a
+                        href="#professionals"
+                        className="block px-4 py-3 text-sm font-medium text-gray-300 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200"
+                        onClick={() => setMobileOpen(false)}
+                    >
+                        For Professionals
+                    </a>
+                    <Link
+                        href="/intake"
+                        className="block text-center px-4 py-3 mt-2 bg-white text-gray-900 text-sm font-semibold rounded-lg hover:bg-gray-100 transition-all duration-200"
+                        onClick={() => setMobileOpen(false)}
+                    >
+                        Create a Report
                     </Link>
                 </div>
             </div>
