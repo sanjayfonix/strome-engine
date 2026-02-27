@@ -72,7 +72,7 @@ export default function TrackHeroSection({ onVerified }: Props) {
                     <div className="w-full max-w-[612px] rounded-2xl overflow-hidden shadow-[0px_8px_32px_0px_rgba(0,0,0,0.20)]">
 
                         {/* Header band */}
-                        <div className="bg-[#E9EFFD] px-5 py-5 sm:px-8 sm:py-6">
+                        <div className="bg-[#E9EFFD] px-5 py-5 sm:px-8">
                             <h2 className="text-[#0B1F33] text-xl font-semibold">Track your order here</h2>
                             <p className="text-[#515151] text-sm mt-1">Enter your credentials to track your orders.</p>
                         </div>

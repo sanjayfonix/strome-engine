@@ -11,7 +11,11 @@ const navLinks = [
   { label: "Track Order", href: "/track-order" },
 ];
 
-export default function Header() {
+interface HeaderProps {
+  forceScrolled?: boolean;
+}
+
+export default function Header({ forceScrolled = false }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState("/");
@@ -22,9 +26,11 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const isScrolled = forceScrolled || scrolled;
+
   const linkColor = (href: string) => {
     const isActive = activeLink === href;
-    if (scrolled) {
+    if (isScrolled) {
       return isActive
         ? "text-[#1E1E1E] font-medium"
         : "text-[#515151] font-normal";
@@ -42,7 +48,7 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 shrink-0">
           <Image
-            src={scrolled ? "/logoblack.png" : "/logo.png"}
+            src={isScrolled ? "/logoblack.png" : "/logo.png"}
             alt="Storm Engine Logo"
             width={119}
             height={30}
@@ -80,7 +86,7 @@ export default function Header() {
 
         {/* Mobile Hamburger */}
         <button
-          className={`md:hidden p-1.5 rounded-lg transition-colors ${scrolled ? "text-[#1E1E1E] hover:bg-black/10" : "text-white hover:bg-white/10"}`}
+          className={`md:hidden p-1.5 rounded-lg transition-colors ${isScrolled ? "text-[#1E1E1E] hover:bg-black/10" : "text-white hover:bg-white/10"}`}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >

@@ -56,9 +56,9 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-end pt-28 pb-10 sm:pb-14 lg:pb-16 gap-6 lg:flex-row lg:items-end lg:gap-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex flex-col justify-end pt-28 pb-10 sm:pb-14 lg:pb-16 gap-6 lg:flex-row lg:gap-8">
         {/* Left: Heading + CTA */}
-        <div className="flex-1 flex flex-col gap-5 sm:gap-6">
+        <div className="flex-1 flex flex-col gap-5 sm:gap-6 lg:self-end">
           <h1 className="text-[28px] sm:text-4xl lg:text-5xl font-medium text-[#F1F1F1] leading-tight">
             Forensic Engineering Reports Structured, Reviewed, and Defensible.
           </h1>
@@ -75,7 +75,7 @@ export default function HeroSection() {
         </div>
 
         {/* Cards — always vertical stack */}
-        <div className="flex flex-col gap-3 w-full lg:w-72 xl:w-80 lg:pb-2">
+        <div className="flex flex-col gap-3 w-full lg:w-72 xl:w-80 lg:self-start lg:pt-20">
           {floatingCards.map((card) => (
             <FloatingCard key={card.id} card={card} />
           ))}
