@@ -1,23 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const roofTypes = ["Asphalt Shingle", "Metal", "Tile", "Flat / TPO", "Wood Shake", "Slate", "Other"];
-const roofConditions = ["Good", "Fair", "Poor", "Damaged"];
-const roofMaterials = ["Asphalt", "Metal", "Clay Tile", "Concrete Tile", "Wood", "Slate", "Synthetic", "Other"];
-
-function ChevronDown({ open }: { open: boolean }) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className={`w-5 h-5 text-[#64748B] transition-transform duration-200 ${open ? "rotate-180" : ""}`}
-      fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-    </svg>
-  );
-}
+const roofTypes = ["Commercial", "Industrial", "Single Family residential", "Multi Family residential"];
+const roofConditions = ["Good", "Average", "Bad"];
+const roofMaterials = ["Wood", "Metal roofing", "Asphalt Shingle", "Clay Tile", "Slate", "Synthetic"];
 
 function InputField({
   label, required, placeholder, type = "text", value, onChange,
@@ -27,7 +15,7 @@ function InputField({
 }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-sm font-medium text-[#1E293B]">
+      <label className="text-sm font-medium text-[#374151]">
         {label} {required && <span className="text-red-500">*</span>}
       </label>
       <input
@@ -35,7 +23,7 @@ function InputField({
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full h-11 px-3.5 rounded-lg border border-[#E2E8F0] bg-white text-sm text-[#1E293B] placeholder:text-[#94A3B8] focus:outline-none focus:ring-2 focus:ring-[#2563EB]/30 focus:border-[#2563EB] transition-colors"
+        className="w-full h-[42px] px-3.5 rounded-md border border-[#D5D5D5] bg-white text-sm text-[#374151] placeholder:text-[#A8A8A8] outline-none focus:outline-none focus-visible:outline-none transition-colors"
       />
     </div>
   );
@@ -47,27 +35,59 @@ function SelectField({
   label: string; required?: boolean; placeholder?: string; options: string[];
   value: string; onChange: (v: string) => void;
 }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
-    <div className="flex flex-col gap-1.5">
-      <label className="text-sm font-medium text-[#1E293B]">
+    <div className="flex flex-col gap-1.5" ref={ref}>
+      <label className="text-sm font-medium text-[#374151]">
         {label} {required && <span className="text-red-500">*</span>}
       </label>
       <div className="relative">
-        <select
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          className="w-full h-11 px-3.5 pr-10 rounded-lg border border-[#E2E8F0] bg-white text-sm text-[#1E293B] appearance-none focus:outline-none focus:ring-2 focus:ring-[#2563EB]/30 focus:border-[#2563EB] transition-colors"
+        {/* Trigger */}
+        <button
+          type="button"
+          onClick={() => setOpen((prev) => !prev)}
+          className={`w-full h-[42px] px-3.5 pr-10 rounded-md border bg-white text-sm text-left outline-none focus:outline-none focus-visible:outline-none transition-colors flex items-center justify-between ${
+            open ? "border-[#2563EB]" : "border-[#D5D5D5]"
+          } ${value ? "text-[#374151]" : "text-[#A8A8A8]"}`}
         >
-          <option value="" disabled>{placeholder || "Select..."}</option>
-          {options.map((opt) => (
-            <option key={opt} value={opt}>{opt}</option>
-          ))}
-        </select>
-        <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center">
-          <svg className="w-4 h-4 text-[#94A3B8]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <span>{value || placeholder || "Select..."}</span>
+          <svg
+            className={`w-4 h-4 text-[#6B7280] transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+            fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
+          >
             <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
-        </div>
+        </button>
+
+        {/* Dropdown list */}
+        {open && (
+          <div className="absolute z-50 left-0 right-0 top-[calc(100%+2px)] bg-white border border-[#2563EB] rounded-md overflow-hidden shadow-sm">
+            {options.map((opt, i) => (
+              <button
+                key={opt}
+                type="button"
+                onClick={() => { onChange(opt); setOpen(false); }}
+                className={`w-full text-left px-3.5 py-2.5 text-sm text-[#374151] hover:bg-[#F3F6F9] transition-colors ${
+                  i !== options.length - 1 ? "border-b border-dashed border-[#D5D5D5]" : ""
+                } ${value === opt ? "font-medium" : "font-normal"}`}
+              >
+                {opt}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -89,7 +109,12 @@ function AccordionSection({
         <span className="text-sm sm:text-base font-semibold text-[#0B1F33]">
           {title} {required && <span className="text-red-500">*</span>}
         </span>
-        <ChevronDown open={open} />
+        <svg
+          className={`w-5 h-5 text-[#64748B] transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+        </svg>
       </button>
       {open && (
         <div className="px-5 pb-5 border-t border-[#E2E8F0]">
@@ -120,7 +145,7 @@ export default function CreateReportForm() {
 
   return (
     <div className="min-h-screen bg-[#F8FAFC] py-8 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
 
         {/* Back link */}
         <Link
