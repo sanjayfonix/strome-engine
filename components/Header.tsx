@@ -8,7 +8,7 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "How It Work", href: "#how-it-work" },
   { label: "Pricing", href: "#pricing" },
-  { label: "Track Order", href: "#track-order" },
+  { label: "Track Order", href: "/track-order" },
 ];
 
 export default function Header() {
