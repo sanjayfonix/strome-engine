@@ -62,8 +62,7 @@ export default function TrackHeroSection({ onVerified }: Props) {
 
     return (
         <section
-            className="relative w-full h-screen overflow-hidden"
-            style={{ background: "conic-gradient(from 198.61deg at 64.65% 50%, #111827 0deg, #0B1F33 48.19deg, #2563EB 234.65deg, #111827 360deg)" }}
+            className="relative w-full h-screen overflow-hidden bg-[conic-gradient(from_198.61deg_at_64.65%_50%,#111827_0deg,#0B1F33_48.19deg,#2563EB_234.65deg,#111827_360deg)]"
         >
 
             <div className="relative z-10 max-w-7xl mx-auto items-center h-full px-4 sm:px-8 lg:px-12">
@@ -135,9 +134,7 @@ export default function TrackHeroSection({ onVerified }: Props) {
                     <h1 className="text-white text-4xl sm:text-5xl lg:text-[56px] font-semibold leading-tight">
                         Track Report status
                     </h1>
-                    <p className="text-white/70 text-sm sm:text-base max-w-md leading-relaxed">
-                        Access real-time progress updates for your forensic engineering report — from submission to certification
-                    </p>
+                    <p className="text-white/70 text-sm sm:text-base max-w-md leading-relaxed">Access real-time progress updates for your forensic engineering report — from submission to certification</p>
                     <Link
                         href="/create-report"
                         className="flex items-center gap-2  bg-[#2563EB] text-white text-sm font-semibold px-5 py-2.5 rounded-full w-fit transition-all duration-200 hover:shadow-[0px_3px_4px_0px_#00000033] active:bg-[#102A63]"
