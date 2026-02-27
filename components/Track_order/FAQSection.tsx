@@ -45,13 +45,13 @@ export default function FAQSection() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Label */}
-                <span className="text-[#0B1F33] text-base sm:text-xl ">
+                <span className="text-[#050D15] text-[20px] font-general-sans sm:text-xl ">
                     /FAQs/
                 </span>
 
                 {/* Heading row */}
-                <div className="flex items-center justify-between mt-3 mb-8 sm:mb-10">
-                    <h2 className="text-[#0B1F33] text-[28px] sm:text-4xl font-medium leading-tight">
+                <div className="flex items-center justify-between mt-8 mb-8 sm:mb-10">
+                    <h2 className="text-[#1e1e1e] text-[40px] sm:text-4xl font-general-sans ">
                         Frequently Asked Questions
                     </h2>
 
@@ -82,7 +82,7 @@ export default function FAQSection() {
                                     onClick={() => toggle(faq.id)}
                                     className="w-full flex items-center justify-between px-4 sm:px-5 py-3 sm:py-4 text-left gap-3 sm:gap-4"
                                 >
-                                    <span className="text-[#0B1F33] text-base sm:text-lg lg:text-[24px] font-medium leading-snug">
+                                    <span className="text-[#1e1e1e] text-base sm:text-lg lg:text-[24px] font-general-sans font-medium">
                                         {faq.question}
                                     </span>
 
