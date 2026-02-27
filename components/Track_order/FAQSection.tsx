@@ -82,7 +82,7 @@ export default function FAQSection() {
                                     onClick={() => toggle(faq.id)}
                                     className="w-full flex items-center justify-between px-5 py-4 text-left gap-4"
                                 >
-                                    <span className="text-[#0B1F33] text-sm sm:text-base font-medium leading-snug">
+                                    <span className="text-[#0B1F33] text-[24px] font-medium leading-snug">
                                         {faq.question}
                                     </span>
 
@@ -118,7 +118,7 @@ export default function FAQSection() {
                                 <div
                                     className={`transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? "max-h-56 opacity-100" : "max-h-0 opacity-0"}`}
                                 >
-                                    <p className="px-5 pb-5 text-[#515151] text-sm leading-relaxed">
+                                    <p className="px-5 pb-5 w-2/3 text-[#515151] text-[18px] leading-relaxed">
                                         {faq.answer}
                                     </p>
                                 </div>

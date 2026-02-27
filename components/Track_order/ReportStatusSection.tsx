@@ -26,21 +26,21 @@ export default function ReportStatusSection() {
     }
     return (
         <section className="min-h-screen   bg-[#F3F6F9] py-10 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-7xl  mx-auto flex flex-col gap-6">
+            <div className="max-w-7xl pt-24 mx-auto flex flex-col gap-6">
 
                 {/* ── Page heading ─────────────────────────────────── */}
-                <div>
-                    <h1 className="text-[#0B1F33] text-2xl pt-24 sm:text-3xl font-semibold leading-snug">
+                <div className="flex flex-col gap-2">
+                    <h1 className="text-[#0B1F33] text-[40px] font-medium leading-[46px] font-['General_Sans']">
                         Report status &amp; Certification Progress
                     </h1>
-                    <p className="text-[#6B7280] text-sm mt-1.5">
+                    <p className="text-[#6B7280] text-base font-normal leading-[150%] font-['Inter']">
                         Monitor the structured forensic engineering workflow — from submission to licensed certification.
                     </p>
                 </div>
 
                 {/* ── Case Overview card ───────────────────────────── */}
                 <div className="bg-white rounded-2xl shadow-sm border border-[#E5E7EB] p-6 flex flex-col gap-5">
-                    <h2 className="text-[#0B1F33] text-base font-semibold">Case Overview</h2>
+                    <h2 className="text-[#0B1F33] font-inter text-[24px] ">Case Overview</h2>
 
                     {/* Fields grid */}
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-y-4 gap-x-6">
@@ -69,86 +69,112 @@ export default function ReportStatusSection() {
 
                 {/* ── Report Progress card ─────────────────────────── */}
                 <div className="bg-white rounded-2xl shadow-sm border border-[#E5E7EB] p-6 flex flex-col gap-6">
-                    <div>
-                        <h2 className="text-[#0B1F33] text-base font-semibold">Report Progress</h2>
-                        <p className="text-[#9CA3AF] text-xs mt-1">
+                    <div className="flex flex-col gap-2">
+                        <h2 className="text-[#0B1F33] font-inter text-[24px]">Report Progress</h2>
+                        <p className="text-[#9CA3AF] text-[14px]">
                             Your report moves through a structured forensic engineering workflow. Each stage is logged for transparency and compliance.
                         </p>
                     </div>
 
-                    {/* Steps — full width, clickable */}
-                    <div className="flex items-start w-full">
+                    {/* Steps — vertical on mobile/tablet, horizontal on xl */}
+                    <div className="flex flex-col xl:flex-row xl:items-start w-full gap-0">
                         {STEPS.map((step, i) => {
                             const isCompleted = i < completedCount;
-                            const isCurrent = i === completedCount; // next to complete
+                            const isCurrent = i === completedCount;
                             const isLast = i === STEPS.length - 1;
 
                             return (
-                                <div key={i} className="flex items-start flex-1 min-w-0">
-                                    {/* Step node */}
-                                    <div
-                                        className="flex flex-col items-center gap-2 cursor-pointer select-none shrink-0"
-                                        onClick={() => handleStepClick(i)}
-                                        title={isCurrent ? "Click to complete this step" : isCompleted ? "Click to undo" : ""}
-                                    >
-                                        {/* Circle */}
-                                        {isCompleted ? (
-                                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 transition-all duration-300">
-                                                <rect width="60" height="60" rx="30" fill="#0B1F33"/>
-                                                <g clipPath="url(#clip_done)">
-                                                    <path d="M35.59 24.41L34.18 23L27.84 29.34L29.25 30.75L35.59 24.41ZM39.83 23L29.25 33.58L25.07 29.41L23.66 30.82L29.25 36.41L41.25 24.41L39.83 23ZM18 30.82L23.59 36.41L25 35L19.42 29.41L18 30.82Z" fill="white"/>
-                                                </g>
-                                                <defs>
-                                                    <clipPath id="clip_done">
-                                                        <rect width="24" height="24" fill="white" transform="translate(18 18)"/>
-                                                    </clipPath>
-                                                </defs>
-                                            </svg>
-                                        ) : (
-                                            <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 transition-all duration-300">
-                                                <rect x="0.5" y="0.5" width="59" height="59" rx="29.5" fill="#E7E9EB"/>
-                                                <rect x="0.5" y="0.5" width="59" height="59" rx="29.5" stroke="#0B1F33"/>
-                                                <g clipPath="url(#clip_undone)">
-                                                    <path d="M35.59 24.41L34.18 23L27.84 29.34L29.25 30.75L35.59 24.41ZM39.83 23L29.25 33.58L25.07 29.41L23.66 30.82L29.25 36.41L41.25 24.41L39.83 23ZM18 30.82L23.59 36.41L25 35L19.42 29.41L18 30.82Z" fill="#0B1F33"/>
-                                                </g>
-                                                <defs>
-                                                    <clipPath id="clip_undone">
-                                                        <rect width="24" height="24" fill="white" transform="translate(18 18)"/>
-                                                    </clipPath>
-                                                </defs>
-                                            </svg>
-                                        )}
+                                <div key={i} className="flex flex-col xl:contents">
 
-                                        {/* Label */}
-                                        <div className="flex flex-col items-center text-center gap-0.5 w-[90px] sm:w-[110px]">
-                                            <span className={`text-xs font-medium leading-tight ${isCompleted ? "text-[#111827]" : "text-[#9CA3AF]"}`}>
-                                                {step.label}
-                                            </span>
-                                            <span className={`text-[10px] ${isCompleted ? "text-[#6B7280]" : "text-[#9CA3AF] italic"}`}>
-                                                {isCompleted ? step.completedDate : "in progress"}
-                                            </span>
+                                    {/* ── Mobile/tablet: horizontal row (icon + text) + vertical connector below ── */}
+                                    <div className="flex xl:hidden flex-col items-start w-full">
+                                        <div
+                                            className="flex items-center gap-4 cursor-pointer select-none w-full"
+                                            onClick={() => handleStepClick(i)}
+                                        >
+                                            {/* Icon */}
+                                            {isCompleted ? (
+                                                <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 shrink-0 transition-all duration-300">
+                                                    <rect width="60" height="60" rx="30" fill="#0B1F33"/>
+                                                    <g clipPath="url(#clip_done_m)">
+                                                        <path d="M35.59 24.41L34.18 23L27.84 29.34L29.25 30.75L35.59 24.41ZM39.83 23L29.25 33.58L25.07 29.41L23.66 30.82L29.25 36.41L41.25 24.41L39.83 23ZM18 30.82L23.59 36.41L25 35L19.42 29.41L18 30.82Z" fill="white"/>
+                                                    </g>
+                                                    <defs><clipPath id="clip_done_m"><rect width="24" height="24" fill="white" transform="translate(18 18)"/></clipPath></defs>
+                                                </svg>
+                                            ) : (
+                                                <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-10 h-10 shrink-0 transition-all duration-300">
+                                                    <rect x="0.5" y="0.5" width="59" height="59" rx="29.5" fill="#E7E9EB"/>
+                                                    <rect x="0.5" y="0.5" width="59" height="59" rx="29.5" stroke="#0B1F33"/>
+                                                    <g clipPath="url(#clip_undone_m)">
+                                                        <path d="M35.59 24.41L34.18 23L27.84 29.34L29.25 30.75L35.59 24.41ZM39.83 23L29.25 33.58L25.07 29.41L23.66 30.82L29.25 36.41L41.25 24.41L39.83 23ZM18 30.82L23.59 36.41L25 35L19.42 29.41L18 30.82Z" fill="#0B1F33"/>
+                                                    </g>
+                                                    <defs><clipPath id="clip_undone_m"><rect width="24" height="24" fill="white" transform="translate(18 18)"/></clipPath></defs>
+                                                </svg>
+                                            )}
+                                            {/* Label beside icon */}
+                                            <div className="flex flex-col gap-0.5">
+                                                <span className={`text-sm font-medium ${isCompleted ? "text-[#111827]" : "text-[#9CA3AF]"}`}>{step.label}</span>
+                                                <span className={`text-xs ${isCompleted ? "text-[#6B7280]" : "text-[#9CA3AF] italic"}`}>
+                                                    {isCompleted ? step.completedDate : "In progress"}
+                                                </span>
+                                            </div>
                                         </div>
+                                        {/* Vertical connector */}
+                                        {!isLast && (
+                                            <div className="ml-5 w-0 border-l-2 border-dashed h-6 transition-colors duration-300 mt-1 mb-1"
+                                                style={{ borderColor: isCompleted ? "#374151" : "#D1D5DB" }} />
+                                        )}
                                     </div>
 
-                                    {/* Connector — flex-1 stretches to fill space */}
-                                    {!isLast && (
-                                        <div className="flex-1 flex items-center mt-5 px-1">
-                                            <div
-                                                className={`w-full h-0 border-t-2 border-dashed transition-colors duration-300 ${isCompleted ? "border-[#374151]" : "border-[#D1D5DB]"
-                                                    }`}
-                                            />
+                                    {/* ── Desktop xl: original horizontal layout ── */}
+                                    <div className="hidden xl:contents">
+                                        <div
+                                            className="flex flex-col items-center gap-2 cursor-pointer select-none shrink-0"
+                                            onClick={() => handleStepClick(i)}
+                                            title={isCurrent ? "Click to complete this step" : isCompleted ? "Click to undo" : ""}
+                                        >
+                                            {isCompleted ? (
+                                                <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[60px] h-[60px] shrink-0 transition-all duration-300">
+                                                    <rect width="60" height="60" rx="30" fill="#0B1F33"/>
+                                                    <g clipPath="url(#clip_done_xl)">
+                                                        <path d="M35.59 24.41L34.18 23L27.84 29.34L29.25 30.75L35.59 24.41ZM39.83 23L29.25 33.58L25.07 29.41L23.66 30.82L29.25 36.41L41.25 24.41L39.83 23ZM18 30.82L23.59 36.41L25 35L19.42 29.41L18 30.82Z" fill="white"/>
+                                                    </g>
+                                                    <defs><clipPath id="clip_done_xl"><rect width="24" height="24" fill="white" transform="translate(18 18)"/></clipPath></defs>
+                                                </svg>
+                                            ) : (
+                                                <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[60px] h-[60px] shrink-0 transition-all duration-300">
+                                                    <rect x="0.5" y="0.5" width="59" height="59" rx="29.5" fill="#E7E9EB"/>
+                                                    <rect x="0.5" y="0.5" width="59" height="59" rx="29.5" stroke="#0B1F33"/>
+                                                    <g clipPath="url(#clip_undone_xl)">
+                                                        <path d="M35.59 24.41L34.18 23L27.84 29.34L29.25 30.75L35.59 24.41ZM39.83 23L29.25 33.58L25.07 29.41L23.66 30.82L29.25 36.41L41.25 24.41L39.83 23ZM18 30.82L23.59 36.41L25 35L19.42 29.41L18 30.82Z" fill="#0B1F33"/>
+                                                    </g>
+                                                    <defs><clipPath id="clip_undone_xl"><rect width="24" height="24" fill="white" transform="translate(18 18)"/></clipPath></defs>
+                                                </svg>
+                                            )}
+                                            <div className="flex flex-col items-center text-center gap-0.5">
+                                                <span className={`text-xs font-medium whitespace-nowrap ${isCompleted ? "text-[#111827]" : "text-[#9CA3AF]"}`}>{step.label}</span>
+                                                <span className={`text-[10px] whitespace-nowrap ${isCompleted ? "text-[#6B7280]" : "text-[#9CA3AF] italic"}`}>
+                                                    {isCompleted ? step.completedDate : "in progress"}
+                                                </span>
+                                            </div>
                                         </div>
-                                    )}
+                                        {!isLast && (
+                                            <div className="flex-1 flex items-center mt-[30px] px-1 min-w-[16px]">
+                                                <div className={`w-full border-t-2 border-dashed transition-colors duration-300 ${isCompleted ? "border-[#374151]" : "border-[#D1D5DB]"}`} />
+                                            </div>
+                                        )}
+                                    </div>
+
                                 </div>
                             );
                         })}
                     </div>
 
-                    {/* Info banner — blue in progress, green when all done */}
+                    {/* Info banner — gap 8px, radius 8px, py 12px, px 8px, bg #E9EFFD, border #5182EF */}
                     <div
-                        className={`flex items-center gap-2.5 rounded-lg px-4 py-3 border transition-colors duration-500 ${allDone
+                        className={`flex items-center gap-2 rounded-lg px-2 py-3 border transition-colors duration-500 ${allDone
                                 ? "bg-[#F0FDF4] border-[#BBF7D0]"
-                                : "bg-[#EFF6FF] border-[#BFDBFE]"
+                                : "bg-[#E9EFFD] border-[#5182EF]"
                             }`}
                     >
                         <svg
@@ -175,7 +201,7 @@ export default function ReportStatusSection() {
                 {/* ── Preliminary Engineering Draft card ──────────── */}
                 <div className="bg-white rounded-2xl shadow-sm border border-[#E5E7EB] p-6 flex flex-col gap-4">
                     <div>
-                        <h2 className="text-[#0B1F33] text-base font-semibold">Preliminary Engineering Draft</h2>
+                        <h2 className="text-[#0B1F33] font-inter text-[24px]">Preliminary Engineering Draft</h2>
                         <p className="text-[#9CA3AF] text-xs mt-1">
                             A structured engineering draft has been generated. Final certification will occur following licensed Professional Engineer validation.
                         </p>

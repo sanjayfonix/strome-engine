@@ -21,7 +21,6 @@ export default function TrackHeroSection({ onVerified }: Props) {
     const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
     useEffect(() => {
-        if (step === "otp") startCountdown();
         return () => { if (timerRef.current) clearInterval(timerRef.current); };
     }, [step]);
 
@@ -77,49 +76,55 @@ export default function TrackHeroSection({ onVerified }: Props) {
                             <p className="text-[#515151] text-sm mt-1">Enter your credentials to track your orders.</p>
                         </div>
 
-                        {/* Form body */}
-                        <div className="bg-white px-5 py-5 sm:px-8 sm:py-6">
+                        {/* Form body — padding: 24px top/bottom, 32px left/right */}
+                        <div className="bg-white px-5 py-6 sm:px-8">
                             <form onSubmit={handleGetOtp} className="flex flex-col gap-5">
 
-                                {/* Email ID */}
-                                <div className="flex flex-col gap-1.5">
-                                    <label className="text-[#374151] text-sm font-medium">Email ID</label>
-                                    <div className={`flex items-center gap-2.5 h-[46px] px-3.5 rounded-lg border bg-white transition-colors ${emailError ? "border-red-400" : "border-[#D5D5D5]"}`}>
-                                        <svg className="w-4 h-4 text-[#9CA3AF] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                                        </svg>
-                                        <input
-                                            type="email"
-                                            value={email}
-                                            onChange={(e) => { setEmail(e.target.value); setEmailError(false); }}
-                                            placeholder="Enter your email id here"
-                                            className="flex-1 text-sm text-[#374151] placeholder:text-[#A8A8A8] bg-transparent outline-none"
-                                        />
+                                {/* Fields container — gap 12px between fields */}
+                                <div className="flex flex-col gap-3">
+
+                                    {/* Email ID — label + input gap: 8px */}
+                                    <div className="flex flex-col gap-2">
+                                        <label className="text-[#374151] text-sm font-medium">Email ID</label>
+                                        <div className={`flex items-center gap-2.5 h-[46px] px-3.5 rounded-lg border bg-white transition-colors ${emailError ? "border-red-400" : "border-[#D5D5D5]"}`}>
+                                            <svg className="w-4 h-4 text-[#9CA3AF] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                            </svg>
+                                            <input
+                                                type="email"
+                                                value={email}
+                                                onChange={(e) => { setEmail(e.target.value); setEmailError(false); }}
+                                                placeholder="Enter your email id here"
+                                                className="flex-1 text-sm text-[#374151] placeholder:text-[#A8A8A8] bg-transparent outline-none"
+                                            />
+                                        </div>
+                                        {emailError && <span className="text-red-500 text-xs">This field is required*</span>}
                                     </div>
-                                    {emailError && <span className="text-red-500 text-xs">This field is required*</span>}
+
+                                    {/* Case ID — label + input gap: 8px */}
+                                    <div className="flex flex-col gap-2">
+                                        <label className="text-[#374151] text-sm font-medium">Case ID</label>
+                                        <div className={`flex items-center gap-2.5 h-[46px] px-3.5 rounded-lg border bg-white transition-colors ${caseIdError ? "border-red-400" : "border-[#D5D5D5]"}`}>
+                                            <svg className="w-4 h-4 text-[#9CA3AF] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                                            </svg>
+                                            <input
+                                                type="text"
+                                                value={caseId}
+                                                onChange={(e) => { setCaseId(e.target.value); setCaseIdError(false); }}
+                                                placeholder="Enter your case id here"
+                                                className="flex-1 text-sm text-[#374151] placeholder:text-[#A8A8A8] bg-transparent outline-none"
+                                            />
+                                        </div>
+                                        {caseIdError && <span className="text-red-500 text-xs">This field is required*</span>}
+                                    </div>
+
                                 </div>
 
-                                {/* Case ID */}
-                                <div className="flex flex-col gap-1.5">
-                                    <label className="text-[#374151] text-sm font-medium">Case ID</label>
-                                    <div className={`flex items-center gap-2.5 h-[46px] px-3.5 rounded-lg border bg-white transition-colors ${caseIdError ? "border-red-400" : "border-[#D5D5D5]"}`}>
-                                        <svg className="w-4 h-4 text-[#9CA3AF] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                                            <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                                        </svg>
-                                        <input
-                                            type="text"
-                                            value={caseId}
-                                            onChange={(e) => { setCaseId(e.target.value); setCaseIdError(false); }}
-                                            placeholder="Enter your case id here"
-                                            className="flex-1 text-sm text-[#374151] placeholder:text-[#A8A8A8] bg-transparent outline-none"
-                                        />
-                                    </div>
-                                    {caseIdError && <span className="text-red-500 text-xs">This field is required*</span>}
-                                </div>
-
+                                {/* Button — h: 48px, radius: 24px, padding: 12px/20px */}
                                 <button
                                     type="submit"
-                                    className="w-full h-12 rounded-full bg-[#2563EB] text-white text-sm font-semibold transition-all duration-200 hover:shadow-[0px_3px_4px_0px_#00000033] active:bg-[#102A63]"
+                                    className="w-full h-12 rounded-full bg-[#2563EB] text-white text-sm font-semibold px-5 py-3 transition-all duration-200 hover:shadow-[0px_3px_4px_0px_#00000033] active:bg-[#102A63]"
                                 >
                                     Get OTP
                                 </button>
@@ -158,8 +163,8 @@ export default function TrackHeroSection({ onVerified }: Props) {
                         onClick={() => setStep("form")}
                     />
 
-                    {/* Modal card */}
-                    <div className="relative z-10 w-full max-w-sm rounded-2xl overflow-hidden shadow-[0px_16px_48px_0px_rgba(0,0,0,0.30)]">
+                    {/* Modal card — w: 612px, radius: 24px */}
+                    <div className="relative z-10 w-full max-w-[612px] rounded-[24px] overflow-hidden shadow-[0px_16px_48px_0px_rgba(0,0,0,0.30)]">
 
                         {/* Header band */}
                         <div className="bg-[#E9EFFD] px-8 py-5">
@@ -173,8 +178,8 @@ export default function TrackHeroSection({ onVerified }: Props) {
                             </p>
                         </div>
 
-                        {/* OTP body */}
-                        <div className="bg-white px-8 py-6 flex flex-col gap-5">
+                        {/* OTP body — pt: 24px, pr/pl: 32px, pb: 32px, gap: 20px */}
+                        <div className="bg-white px-8 pt-6 pb-8 flex flex-col gap-5">
                             <div className="flex flex-col gap-3">
                                 <span className="text-[#374151] text-sm text-center">Enter code here</span>
                                 <div className="flex items-center justify-center gap-2 sm:gap-3">
@@ -188,11 +193,13 @@ export default function TrackHeroSection({ onVerified }: Props) {
                                             value={digit}
                                             onChange={(e) => handleOtpChange(i, e.target.value)}
                                             onKeyDown={(e) => handleOtpKeyDown(i, e)}
-                                            className="w-11 h-11 rounded-lg border border-[#D5D5D5] bg-[#E8ECEF] text-center text-base font-semibold text-[#0B1F33] outline-none focus:border-[#2563EB] focus:bg-white transition-colors"
+                                            className="w-11 h-11 rounded-lg border border-[#D5D5D5] bg-[#E3E3E3] text-center text-base font-semibold text-[#0B1F33] outline-none focus:border-[#2563EB] focus:bg-white transition-colors"
                                         />
                                     ))}
                                 </div>
                             </div>
+
+                            <div className="h-px bg-[#E5E7EB]" />
 
                             <button
                                 type="button"
