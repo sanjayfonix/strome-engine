@@ -71,9 +71,9 @@ export default function TrackHeroSection({ onVerified }: Props) {
                     <div className="w-full max-w-[612px] rounded-2xl overflow-hidden shadow-[0px_8px_32px_0px_rgba(0,0,0,0.20)]">
 
                         {/* Header band */}
-                        <div className="bg-[#E9EFFD] px-4 py-4 sm:px-6 sm:py-5 lg:px-5 lg:py-5">
-                            <h2 className="text-[#0B1F33] text-base sm:text-xl lg:text-[20px] font-medium lg:font-medium lg:leading-[20px] lg:font-['General_Sans']">Track your order here</h2>
-                            <p className="text-[#515151] text-xs sm:text-sm lg:text-[14px] mt-2 sm:mt-1.5 lg:mt-1">Enter your credentials to track your orders.</p>
+                        <div className="bg-[#E9EFFD] px-5 py-5 sm:px-8">
+                            <h2 className="text-[#0B1F33] text-xl font-semibold">Track your order here</h2>
+                            <p className="text-[#515151] text-sm mt-1">Enter your credentials to track your orders.</p>
                         </div>
 
                         {/* Form body — padding: 24px top/bottom, 32px left/right */}
