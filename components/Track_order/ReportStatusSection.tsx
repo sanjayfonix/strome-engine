@@ -53,8 +53,8 @@ export default function ReportStatusSection() {
                         ].map(({ label, value, isStatus }) => (
                             <div key={label} className="flex flex-col gap-1">
                                 <span className="text-[#9CA3AF] text-sm sm:text-base lg:text-[18px]">{label}</span>
-                                <span className={`text-sm sm:text-base lg:text-[16px] font-medium ${isStatus && allDone ? "text-[#16A34A] font-semibold" : "text-[#111827]"}`}>
-                                    {value}
+                                <span className={`text-sm sm:text-base lg:text-[16px] font-inter ${isStatus && allDone ? "text-[#16A34A] font-semibold" : "text-[#111827]"}`}>
+                                    {value} 
                                 </span>
                             </div>
                         ))}
@@ -113,8 +113,8 @@ export default function ReportStatusSection() {
                                             )}
                                             {/* Label beside icon */}
                                             <div className="flex flex-col gap-0.5">
-                                                <span className={`text-sm font-medium ${isCompleted ? "text-[#111827]" : "text-[#9CA3AF]"}`}>{step.label}</span>
-                                                <span className={`text-xs ${isCompleted ? "text-[#6B7280]" : "text-[#9CA3AF] italic"}`}>
+                                                <span className={`text-[14px] font-inter ${isCompleted ? "text-[#1e1e1e]" : "text-[#9CA3AF]"}`}>{step.label}</span>
+                                                <span className={`text-[12px] font-inter ${isCompleted ? "text-[#515151]" : "text-[#9CA3AF] italic"}`}>
                                                     {isCompleted ? step.completedDate : "In progress"}
                                                 </span>
                                             </div>
@@ -215,7 +215,7 @@ export default function ReportStatusSection() {
                             </svg>
 
                         </button>
-                        <button className="flex items-center gap-2 bg-[#bbcff9] border border-[#D1D5DB] text-[#2563eb] text-sm font-medium px-5 py-2.5 rounded-full transition-all duration-200 hover:bg-[#F9FAFB] active:scale-95">
+                        <button className="flex items-center gap-2 bg-[#e9effd] border border-[#bbcff9] text-[#2563eb] text-sm font-medium px-5 py-2.5 rounded-full transition-all duration-200 hover:bg-[#F9FAFB] active:scale-95">
                             View Preliminary Report
                         </button>
                     </div>
