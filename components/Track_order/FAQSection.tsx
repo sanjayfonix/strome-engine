@@ -80,9 +80,9 @@ export default function FAQSection() {
                                 <button
                                     type="button"
                                     onClick={() => toggle(faq.id)}
-                                    className="w-full flex items-center justify-between px-5 py-4 text-left gap-4"
+                                    className="w-full flex items-center justify-between px-4 sm:px-5 py-3 sm:py-4 text-left gap-3 sm:gap-4"
                                 >
-                                    <span className="text-[#0B1F33] text-[24px] font-medium leading-snug">
+                                    <span className="text-[#0B1F33] text-base sm:text-lg lg:text-[24px] font-medium leading-snug">
                                         {faq.question}
                                     </span>
 
@@ -116,9 +116,9 @@ export default function FAQSection() {
 
                                 {/* Answer */}
                                 <div
-                                    className={`transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? "max-h-56 opacity-100" : "max-h-0 opacity-0"}`}
+                                    className={`transition-all duration-300 ease-in-out overflow-hidden ${isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"}`}
                                 >
-                                    <p className="px-5 pb-5 w-2/3 text-[#515151] text-[18px] leading-relaxed">
+                                    <p className="px-4 sm:px-5 pb-4 sm:pb-5 w-full sm:w-2/3 text-[#515151] text-xs sm:text-sm lg:text-[18px] leading-relaxed">
                                         {faq.answer}
                                     </p>
                                 </div>

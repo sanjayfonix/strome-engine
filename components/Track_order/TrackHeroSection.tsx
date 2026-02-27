@@ -67,17 +67,17 @@ export default function TrackHeroSection({ onVerified }: Props) {
             <div className="relative z-10 max-w-7xl mx-auto items-center h-full px-4 sm:px-8 lg:px-12">
 
                 {/* ── Top: form card aligned right ──────────────────── */}
-                <div className="flex justify-end pt-16 sm:pt-22 lg:pt-28">
+                <div className="flex justify-end pt-28 sm:pt-22 lg:pt-28">
                     <div className="w-full max-w-[612px] rounded-2xl overflow-hidden shadow-[0px_8px_32px_0px_rgba(0,0,0,0.20)]">
 
                         {/* Header band */}
-                        <div className="bg-[#E9EFFD] px-5 py-5 sm:px-8 sm:py-6">
-                            <h2 className="text-[#0B1F33] text-xl font-semibold">Track your order here</h2>
-                            <p className="text-[#515151] text-sm mt-1">Enter your credentials to track your orders.</p>
+                        <div className="bg-[#E9EFFD] px-4 py-4 sm:px-6 sm:py-5 lg:px-5 lg:py-5">
+                            <h2 className="text-[#0B1F33] text-base sm:text-xl lg:text-[20px] font-medium lg:font-medium lg:leading-[20px] lg:font-['General_Sans']">Track your order here</h2>
+                            <p className="text-[#515151] text-xs sm:text-sm lg:text-[14px] mt-2 sm:mt-1.5 lg:mt-1">Enter your credentials to track your orders.</p>
                         </div>
 
                         {/* Form body — padding: 24px top/bottom, 32px left/right */}
-                        <div className="bg-white px-5 py-6 sm:px-8">
+                        <div className="bg-white px-4 py-5 sm:px-6 sm:py-6 lg:px-5 lg:py-6">
                             <form onSubmit={handleGetOtp} className="flex flex-col gap-5">
 
                                 {/* Fields container — gap 12px between fields */}
@@ -167,8 +167,8 @@ export default function TrackHeroSection({ onVerified }: Props) {
                     <div className="relative z-10 w-full max-w-[612px] rounded-[24px] overflow-hidden shadow-[0px_16px_48px_0px_rgba(0,0,0,0.30)]">
 
                         {/* Header band */}
-                        <div className="bg-[#E9EFFD] px-8 py-5">
-                            <h2 className="text-[#0B1F33] text-lg font-semibold">Enter OTP</h2>
+                        <div className="bg-[#E9EFFD] px-4 py-4 sm:px-6 sm:py-5 lg:px-8 lg:py-5">
+                            <h2 className="text-[#0B1F33] text-base sm:text-lg lg:text-lg font-semibold">Enter OTP</h2>
                             <p className="text-[#515151] text-xs mt-1">
                                 Enter 6-digit code sent to{" "}
                                 <span className="font-semibold text-[#0B1F33]">{email || "your email"}</span>{" "}
@@ -179,10 +179,10 @@ export default function TrackHeroSection({ onVerified }: Props) {
                         </div>
 
                         {/* OTP body — pt: 24px, pr/pl: 32px, pb: 32px, gap: 20px */}
-                        <div className="bg-white px-8 pt-6 pb-8 flex flex-col gap-5">
+                        <div className="bg-white px-4 py-5 sm:px-6 sm:py-6 lg:px-8 lg:pt-6 lg:pb-8 flex flex-col gap-5">
                             <div className="flex flex-col gap-3">
-                                <span className="text-[#374151] text-sm text-center">Enter code here</span>
-                                <div className="flex items-center justify-center gap-2 sm:gap-3">
+                                <span className="text-[#374151] text-xs sm:text-sm lg:text-sm text-center">Enter code here</span>
+                                <div className="flex items-center justify-center gap-1.5 sm:gap-2 lg:gap-2">
                                     {otp.map((digit, i) => (
                                         <input
                                             key={i}
@@ -193,7 +193,7 @@ export default function TrackHeroSection({ onVerified }: Props) {
                                             value={digit}
                                             onChange={(e) => handleOtpChange(i, e.target.value)}
                                             onKeyDown={(e) => handleOtpKeyDown(i, e)}
-                                            className="w-11 h-11 rounded-lg border border-[#D5D5D5] bg-[#E3E3E3] text-center text-base font-semibold text-[#0B1F33] outline-none focus:border-[#2563EB] focus:bg-white transition-colors"
+                                            className="w-9 h-9 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-lg border border-[#D5D5D5] bg-[#E3E3E3] text-center text-sm sm:text-base lg:text-base font-semibold text-[#0B1F33] outline-none focus:border-[#2563EB] focus:bg-white transition-colors"
                                         />
                                     ))}
                                 </div>
