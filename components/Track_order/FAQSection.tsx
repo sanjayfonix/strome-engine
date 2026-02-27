@@ -88,7 +88,7 @@ export default function FAQSection() {
 
                                     {/* + / × icon */}
                                     {isOpen ? (
-                                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+                                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 w-10 h-10 sm:w-12 sm:h-12">
                                             <rect width="48" height="48" rx="12" fill="#F2F2F2" />
                                             <g clipPath="url(#clip_cross)">
                                                 <path d="M31 18.41L29.59 17L24 22.59L18.41 17L17 18.41L22.59 24L17 29.59L18.41 31L24 25.41L29.59 31L31 29.59L25.41 24L31 18.41Z" fill="#515151" />
@@ -100,7 +100,7 @@ export default function FAQSection() {
                                             </defs>
                                         </svg>
                                     ) : (
-                                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0">
+                                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 w-10 h-10 sm:w-12 sm:h-12">
                                             <rect width="48" height="48" rx="12" fill="#F2F2F2" />
                                             <g clipPath="url(#clip_plus)">
                                                 <path d="M31 25H25V31H23V25H17V23H23V17H25V23H31V25Z" fill="#515151" />

@@ -30,10 +30,10 @@ export default function ReportStatusSection() {
 
                 {/* ── Page heading ─────────────────────────────────── */}
                 <div className="flex flex-col gap-2">
-                    <h1 className="text-[#0B1F33] text-[40px] font-medium leading-[46px] font-['General_Sans']">
+                    <h1 className="text-[#0B1F33] text-2xl sm:text-3xl lg:text-[40px] font-medium leading-6 sm:leading-10 lg:leading-[46px] font-['General_Sans']">
                         Report status &amp; Certification Progress
                     </h1>
-                    <p className="text-[#6B7280] text-base font-normal leading-[150%] font-['Inter']">
+                    <p className="text-[#6B7280] text-sm sm:text-base lg:text-base font-normal leading-[150%] font-['Inter']">
                         Monitor the structured forensic engineering workflow — from submission to licensed certification.
                     </p>
                 </div>
