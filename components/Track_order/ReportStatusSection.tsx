@@ -39,8 +39,8 @@ export default function ReportStatusSection() {
                 </div>
 
                 {/* ── Case Overview card ───────────────────────────── */}
-                <div className="bg-white rounded-2xl shadow-sm border border-[#E5E7EB] p-6 flex flex-col gap-5">
-                    <h2 className="text-[#0B1F33] font-inter text-[24px] ">Case Overview</h2>
+                <div className="bg-white rounded-2xl shadow-sm border border-[#E5E7EB] p-4 sm:p-5 lg:p-6 flex flex-col gap-4 sm:gap-5">
+                    <h2 className="text-[#0B1F33] font-inter text-lg sm:text-xl lg:text-[24px]">Case Overview</h2>
 
                     {/* Fields grid */}
                     <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-y-4 gap-x-6">
@@ -52,8 +52,8 @@ export default function ReportStatusSection() {
                             { label: "Property Address", value: "1234 Oak Street, Austin, TX 78701" },
                         ].map(({ label, value, isStatus }) => (
                             <div key={label} className="flex flex-col gap-1">
-                                <span className="text-[#9CA3AF] text-[18px]">{label}</span>
-                                <span className={`text-[16px] font-medium ${isStatus && allDone ? "text-[#16A34A] font-semibold" : "text-[#111827]"}`}>
+                                <span className="text-[#9CA3AF] text-sm sm:text-base lg:text-[18px]">{label}</span>
+                                <span className={`text-sm sm:text-base lg:text-[16px] font-medium ${isStatus && allDone ? "text-[#16A34A] font-semibold" : "text-[#111827]"}`}>
                                     {value}
                                 </span>
                             </div>
