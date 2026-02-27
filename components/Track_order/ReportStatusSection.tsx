@@ -52,8 +52,8 @@ export default function ReportStatusSection() {
                             { label: "Property Address", value: "1234 Oak Street, Austin, TX 78701" },
                         ].map(({ label, value, isStatus }) => (
                             <div key={label} className="flex flex-col gap-1">
-                                <span className="text-[#9CA3AF] text-xs">{label}</span>
-                                <span className={`text-sm font-medium ${isStatus && allDone ? "text-[#16A34A] font-semibold" : "text-[#111827]"}`}>
+                                <span className="text-[#9CA3AF] text-[18px]">{label}</span>
+                                <span className={`text-[16px] font-medium ${isStatus && allDone ? "text-[#16A34A] font-semibold" : "text-[#111827]"}`}>
                                     {value}
                                 </span>
                             </div>
