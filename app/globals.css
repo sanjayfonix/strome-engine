@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-inter: var(--font-inter), 'Inter', sans-serif;
+  --font-inter: 'Inter', sans-serif;
   --font-general-sans: 'General Sans', sans-serif;
 }
 
